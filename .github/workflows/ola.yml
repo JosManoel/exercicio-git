@@ -1,0 +1,22 @@
+name: ola
+
+on:
+  workflow_dispatch:
+    inputs:
+      nome:
+        description: "quem cumpimentar?"
+        default: "turma"
+
+jobs:
+  ola:
+      runs-on: ubuntu-latest
+      steps:
+        - name: cumprimentar
+          env:
+            NOME: ${{inputs.nome}}
+          run: |
+            echo "Olá, $NOME"
+            echo "Runner $RUNNER_OS"
+
+        - name: docker
+          run: docker --version
